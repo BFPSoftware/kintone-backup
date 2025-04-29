@@ -1,0 +1,8 @@
+{
+    "crons": [
+        {
+            "path": "/api/kintone/backup",
+            "schedule": "*/10 * * * *"
+        }
+    ]
+}
