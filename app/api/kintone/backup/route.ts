@@ -84,7 +84,7 @@ function escapeCsvValue(value: string | number | boolean | null | undefined): st
 export async function GET() {
     // create a new folder in google drive under the folder id: 172x2-BMZWnMs9UAK7351vU58Qwxclv92
     const auth = new google.auth.GoogleAuth({
-        keyFile: './app/api/kintone/backup/kintone-backup-457608-4b5ed4c18edd.json',
+        keyFile: './kintone-backup-457608-4b5ed4c18edd.json',
         scopes: [
             'https://www.googleapis.com/auth/drive',
             'https://www.googleapis.com/auth/drive.file',
