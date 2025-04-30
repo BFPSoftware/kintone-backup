@@ -3,6 +3,9 @@ export const GoogleDriveAPIKey = process.env.DRIVE_KEY || '';
 export const KintoneUsername = process.env.KINTONE_ADMIN_USERNAME || '';
 export const KintonePassword = process.env.KINTONE_ADMIN_PASSWORD || '';
 
+export const ClientEmail = process.env.CLIENT_EMAIL || '';
+export const PrivateKey = process.env.PRIVATE_KEY?.replace(/\\n/g, '\n') || '';
+
 // test app
 export const TestViewIDRoot = 5745286;
 export const TestViewIDApp = 5745418;

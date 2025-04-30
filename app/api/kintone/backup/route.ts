@@ -6,6 +6,7 @@ import {
     BFPWikiAPIKey,
     BFPWikiAppID,
     BFPWikiSettingsAppID,
+    ClientEmail,
     DailyAttendanceAppID,
     ErrorLogsAppID,
     FACApplicationAppID,
@@ -20,6 +21,7 @@ import {
     LeaveRequestAppID,
     NetanyaReservationAppID,
     OnlineVolunteerApplicationAppID,
+    PrivateKey,
     SDDReportsAppID,
     StaffFoodOrderAppID,
     VacationReportAppID,
@@ -84,7 +86,10 @@ function escapeCsvValue(value: string | number | boolean | null | undefined): st
 export async function GET() {
     // create a new folder in google drive under the folder id: 172x2-BMZWnMs9UAK7351vU58Qwxclv92
     const auth = new google.auth.GoogleAuth({
-        keyFile: './kintone-backup-457608-4b5ed4c18edd.json',
+        credentials: {
+            client_email: ClientEmail,
+            private_key: PrivateKey
+        },
         scopes: [
             'https://www.googleapis.com/auth/drive',
             'https://www.googleapis.com/auth/drive.file',
@@ -266,16 +271,6 @@ export async function GET() {
                     }
 
                     const csvContent = csvRows.join('\n');
-                    const auth = new google.auth.GoogleAuth({
-                        keyFile: './app/api/kintone/backup/kintone-backup-457608-4b5ed4c18edd.json',
-                        scopes: [
-                            'https://www.googleapis.com/auth/drive',
-                            'https://www.googleapis.com/auth/drive.file',
-                            'https://www.googleapis.com/auth/drive.metadata'
-                        ]
-                    });
-                    // Initialize Google Drive API client
-                    const drive = google.drive({ version: 'v3', auth: auth });
                     await handleFiles(fileKeys, drive, AppId);
                     console.log('files done!');
                     await handleCsvFile(drive, csvContent, AppId, todayFolderId);
