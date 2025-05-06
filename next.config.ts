@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+    experimental: {
+        esmExternals: false // Disable ESM external resolution
+    }
+    /* config options here */
 };
 
 export default nextConfig;
