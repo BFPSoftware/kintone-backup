@@ -27,5 +27,6 @@
         "tailwindcss": "^4",
         "typedoc": "^0.28.2",
         "typescript": "^5"
-    }
+    },
+    "type": "commonjs"
 }
