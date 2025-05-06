@@ -139,7 +139,7 @@ export async function GET() {
             (async () => {
                 try {
                     if (!AppId) return;
-                    const client = kintoneClient;
+                    const client = kintoneClient as KintoneRestAPIClient;
                     const formFields = await client.app.getFormFields({
                         app: AppId
                     });
@@ -391,13 +391,7 @@ const handleFiles = async (fileKeys: any[], drive: drive_v3.Drive, AppId: string
                     return resolve('File already exists: ' + fileKey); // Return the first file ID found
                 }
                 console.log('proceeding');
-                const client = new KintoneRestAPIClient({
-                    baseUrl: 'https://bfp.kintone.com', // Replace with your Kintone domain
-                    auth: {
-                        username: KintoneUsername,
-                        password: KintonePassword
-                    }
-                });
+                const client = kintoneClient as KintoneRestAPIClient;
                 const file = await client.file.downloadFile({ fileKey });
                 if (!file) {
                     return resolve('File not found: ' + fileKey); // Return the first file ID found
